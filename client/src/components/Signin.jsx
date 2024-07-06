@@ -1,27 +1,46 @@
-//eslint-disable-next-line
-import React from 'react'
+// src/SignIn/SignIn.js
+import { useState } from 'react';
+import styles from '../css/Signin.module.css';
 
-import styles from '../css/Signin.module.css'
-const Signin = () => {
+const SignIn = () => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        // Handle sign-in logic here
+        console.log('Username:', username);
+        console.log('Password:', password);
+    };
+
     return (
-        <>
-            <div className={styles.container}>
-                <form>
-                    <h2>Sign In</h2>
-                    <div className={styles.form_group}>
-                        <label htmlFor="username">Username</label>
-                        <input type="text" id="username" />
-                    </div>
-                    <div className={styles.form_group}>
-                        <label htmlFor="password">Password</label>
-                        <input type="password" id="password" />
-                    </div>
-                    <button type="submit">Sign In</button>
-                </form>
-            </div >
+        <div className={styles.signInContainer}>
+            <form className={styles.signInForm} onSubmit={handleSubmit}>
+                <h2 className={styles.title}>Sign In</h2>
+                <div className={styles.formGroup}>
+                    <label htmlFor="username" className={styles.label}>Username</label>
+                    <input
+                        type="text"
+                        id="username"
+                        className={styles.input}
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                </div>
+                <div className={styles.formGroup}>
+                    <label htmlFor="password" className={styles.label}>Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        className={styles.input}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
+                <button type="submit" className={styles.submitButton}>Sign In</button>
+            </form>
+        </div>
+    );
+};
 
-        </>
-    )
-}
-
-export default Signin
+export default SignIn;
