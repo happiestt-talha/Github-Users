@@ -12,6 +12,17 @@ app.get('/', (req, res) => {
 
 })
 
+
+app.get('/hello', (req, res) => {
+    res.json({
+        'message': 'Hello World!:',
+        'name': 'John Doe',
+    })
+
+})
+
+
+
 app.listen(port, () => {
     console.log(`Example app listening on port http://localhost:${port}`);
     connectDB();
